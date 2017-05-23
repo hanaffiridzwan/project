@@ -19,7 +19,7 @@
                                  </select></div></div> -->
 
                         <div class="form-group">
-                            <label for="role" class="col-md-4 control-label">Are you</label>
+                            <label for="role" class="col-md-4 control-label">Anda ialah:</label>
 
                             <div class="col-md-6">
                             <select name="role" class="form-control" >

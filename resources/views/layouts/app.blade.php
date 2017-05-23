@@ -15,6 +15,8 @@
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ ('/daterangepicker.js') }}"></script>
+
     <link rel="stylesheet" type="text/css" href="{{('/daterangepicker.css') }}" />
     <link rel='stylesheet' href="{{ ('/fullcalendar/fullcalendar.css') }}">
     <script src="{{ ('/fullcalendar/lib/jquery.min.js') }}"></script>
@@ -69,8 +71,9 @@
                             <li><a href="{{ route('register') }}">Daftar</a></li>
                         @else
                              <li><a href="{{ url('/borangPenyelian') }}">Penyelian</a></li>
-                              <li><a href="{{ url('/temujanji') }}">Kalendar</a></li>
-                        <li><a href="{{ url('/temujanji/index') }}">Senarai temujanji</a></li>
+                              <li><a href="{{ url('/temujanji/index') }}">Kalendar</a></li>
+                                <li><a href="{{ url('/borangPenyelian/show') }}">Sah</a></li>
+                        <li><a href="{{ url('/temujanji/list') }}">Senarai temujanji</a></li>
                              <li><a href="{{ url('/laporanPrestasi') }}">Laporan</a></li>
                              <li><a href="{{ url('/tugasan') }}">Tugasan</a></li>
                              <li><a href="{{ url('/muatturun') }}">Muatturun</a></li>

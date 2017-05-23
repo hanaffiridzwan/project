@@ -27,7 +27,7 @@
               <td>Nama: </td>
               <td>{{ $user->profile->nama }}</td>
             </tr>
-            @if ($user->userRole == 'Penyelia')
+            @if ($user->userRole == 'penyelia')
            
             <tr>
               <td>Jabatan: </td>
@@ -51,7 +51,7 @@
               </tr>
             <tr>
               <td>id Daftar: </td>
-              <td>{{ $user->profile->idDaftar }}</td>
+              <td>{{ $user->profile->noMatrik }}</td>
             </tr>
              <tr>
              @endif

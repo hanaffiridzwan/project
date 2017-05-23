@@ -31,7 +31,7 @@
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
                             <td>{{ $borangPenyelian->nama }}</td>
-                            <td>{{ $borangPenyelian->laporanPerjumpaan}}</td>
+                            <td> <a href="{{ action('borangPenyeliansController@show', $borangPenyelian->id) }}">{{ $borangPenyelian->laporanPerjumpaan}}</td></a>
                             <td>{{ $borangPenyelian->tarikhPerjumpaan}}</td>
                             <td>
                             <a class="btn btn--primary btn-xs" href="{{ ('borangpenyelian/' .$borangPenyelian->id. 'edit/' ) }}">

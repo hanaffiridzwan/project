@@ -9,6 +9,17 @@ use App\user;
 
 class borangPenyeliansController extends Controller
 {
+
+    public function simpan()
+    {
+      $this->validate($request, ['pengesahan']);
+      $borangPenyelian=borang_penyelians::findOrFail($id);
+      $borangPenyelian->user_id=Auth::user()->id;
+      $borangPenyelian->pengesahan = $request->pengesahan;
+      $borangPenyelian->save();
+
+return redirect()->action('borangPenyeliansController@index')->withMessage('Borang berjaya disahkan');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +77,7 @@ class borangPenyeliansController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('borangPenyelian.show');
     }
 
     /**
@@ -89,7 +100,21 @@ class borangPenyeliansController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $borangPenyelian = new borangPenyelian;
+       $borangPenyelian->nama = $request->nama;
+       $borangPenyelian->noMatrik = $request->noMatrik;
+       $borangPenyelian ->kategoriPelajar = $request->kategoriPelajar;
+       $borangPenyelian->program = $request->program;
+       $borangPenyelian->namaPenyelia = $request->namaPenyelia;
+       $borangPenyelian->laporanPerjumpaan = $request->laporanPerjumpaan;
+       $borangPenyelian->tarikhPerjumpaan = $request->tarikhPerjumpaan;
+       $borangPenyelian->perjalananObjektif =$request->perjalananObjektif;
+       $borangPenyelian->objektif = $request->objektif;
+       $borangPenyelian->tarikhPerjumpaanSeterusnya = $request->tarikhPerjumpaanSeterusnya;
+       $borangPenyelian->user_id=Auth::user()->id;
+       $borangPenyelian->save();
+
+       return redirect()->action('borangPenyeliansController@index')->withMessage('Maklumat anda telah disimpan di dalam sistem');
     }
 
     /**

@@ -37,21 +37,24 @@ class laporanPrestasisController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['namaPelajar' => 'required',  'namaPenyelia' => 'required', 'tarikh' => 'required', 'tajukKajian' => 'required', 'kemajuan' => 'required', 'dapatan' => 'required', 'huraianAktiviti' => 'required','pelan' => 'required', 'komen' => 'required',    ]);
+        $this->validate($request, ['namaPelajar' => 'required',  'namaPenyelia' => 'required', 'tarikh' => 'required', 'tajukKajian' => 'required', 'kemajuan' => 'required', 'dapatan' => 'required', 'huraianAktiviti' => 'required','pelan' => 'required', 'komen' => 'required' ]);
+
        $laporanPrestasi = new laporanPrestasi; 
        $laporanPrestasi->namaPelajar = $request->namaPelajar;
        $laporanPrestasi->namaPenyelia = $request->namaPenyelia;
-          $laporanPrestasi->tarikh = $request->tarikh;
+       $laporanPrestasi->tarikh = $request->tarikh;
        $laporanPrestasi->tajukKajian = $request->tajukKajian;
        $laporanPrestasi->kemajuan = $request->kemajuan;
-          $laporanPrestasi->dapatan = $request->dapatan;
-          $laporanPrestasi->huraianAktiviti = $request->huraianAktiviti;
-          $laporanPrestasi->pelan = $request->pelan;
-        $laporanPrestasi->komen = $request->komen;     
+       $laporanPrestasi->dapatan = $request->dapatan;
+       $laporanPrestasi->huraianAktiviti = $request->huraianAktiviti;
+       $laporanPrestasi->pelan = $request->pelan;
+       $laporanPrestasi->komen = $request->komen;   
        $laporanPrestasi->komenPenyelia = $request->komenPenyelia;   
-      $laporanPrestasi->kemajuanPelajar = $request->kemajuanPelajar;  
+       $laporanPrestasi->kemajuanPelajar = $request->kemajuanPelajar;    
+       $laporanPrestasi->pelanKajian = $request->pelanKajian;
        $laporanPrestasi->user_id=Auth::user()->id;
        $laporanPrestasi->save();
+      
 
         return redirect()->action('laporanPrestasisController@store')->withMessage('Maklumat anda telah disimpan di dalam sistem');
     }
@@ -75,7 +78,7 @@ class laporanPrestasisController extends Controller
      */
     public function edit($id)
     {
-        return view ('laporanPrestasi/edit', ['laporan_Pretasis' =>laporanPrestasi::findOrFail($id)]);
+        // return view ('laporanPrestasi.edit', ['laporan_Pretasis' =>laporanPrestasi::findOrFail($id)]);
     }
 
     /**
@@ -88,15 +91,23 @@ class laporanPrestasisController extends Controller
     public function update(Request $request, $id)
     {
        $laporanPrestasi = laporanPrestasi::findsOrFail($id);
-       $laporanPrestasi->namaLaporan = $request->namaLaporan;
        $laporanPrestasi->namaPelajar = $request->namaPelajar;
        $laporanPrestasi->namaPenyelia = $request->namaPenyelia;
-       $laporanPrestasi->rumusan = $request->rumusan;
-       $laporanPrestasi->markah = $request->markah;
+       $laporanPrestasi->tarikh = $request->tarikh;
+       $laporanPrestasi->tajukKajian = $request->tajukKajian;
+       $laporanPrestasi->kemajuan = $request->kemajuan;
+       $laporanPrestasi->dapatan = $request->dapatan;
+       $laporanPrestasi->huraianAktiviti = $request->huraianAktiviti;
+       $laporanPrestasi->pelan = $request->pelan;
+       $laporanPrestasi->komen = $request->komen;     
+       $laporanPrestasi->komenPenyelia = $request->komenPenyelia;   
+       $laporanPrestasi->kemajuanPelajar = $request->kemajuanPelajar;  
+       $laporanPrestasi->pelanKajian = $request->pelanKajian;
        $laporanPrestasi->user_id=Auth::user()->id;
        $laporanPrestasi->save();
 
-       return redirect('laporanPrestasi');
+       return redirect()->action('laporanPrestasisController@index')->withMessage('Maklumat anda telah disimpan di dalam sistem');
+       // return redirect('laporanPrestasi');
     }
 
     /**
@@ -107,9 +118,9 @@ class laporanPrestasisController extends Controller
      */
     public function destroy($id)
     {
-        $laporanPrestasi = laporanPrestasi::find($id);
+        $laporanPrestasi = laporanPrestasi::findOrFail($id);
         $laporanPrestasi->delete();
+        return back()->withError('Maklumat telah berjaya dibuang');
 
-        return redirect('laporanPrestasi');
-    }
+    }   
 }

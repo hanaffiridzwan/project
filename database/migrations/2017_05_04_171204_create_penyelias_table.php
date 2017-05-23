@@ -21,9 +21,9 @@ class CreatePenyeliasTable extends Migration
             $table->integer('noBilik')->nullable();
             $table->integer('noTelefon')->nullable();
             $table->string('gambar')->nullable();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 

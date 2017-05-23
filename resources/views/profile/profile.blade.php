@@ -43,7 +43,7 @@
                     <div class="form-group">
                             <label for="noMatrik" class="col-md-4 control-label">Nombor Matrik</label>
                             <div class="col-md-6">
-                            <input id="noMatrik" type="text" class="form-control" name="noMatrik" value="{{ old('noMatrik', $user->profile->Matrik) }}" required>
+                            <input id="noMatrik" type="text" class="form-control" name="noMatrik" value="{{ old('noMatrik', $user->profile->noMatrik) }}" required>
                               <!--  <td>{{ Auth::user()->noMatrik}}</td> -->
                             </div>
                         </div>

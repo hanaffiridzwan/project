@@ -43,6 +43,8 @@ class TemujanjiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
 
@@ -91,12 +93,12 @@ return redirect()->action('TemujanjiController@index')->withMessage('Temujanji b
     public function show($id)
     {
         $temujanji = temujanji::findOrFail($id);
-        $first_date = new DateTime($temujanji->masaMula);
-        $second_date = new DateTime($temujanji->masaAkhir);
-        $difference = $first_date->diff($second_date);
+        // $first_date = new DateTime($temujanji->masaMula);
+        // $second_date = new DateTime($temujanji->masaAkhir);
+        // $difference = $first_date->diff($second_date);
 
-        $data = ['temujanji' => $temujanji, 'duration' => $this->format_interval($difference)];
-        return view('temujanji.view', $data);
+        // $data = ['temujanji' => $temujanji, 'duration' => $this->format_interval($difference)];
+        return view('temujanji.view', compact('temujanji'));
         }
 
     /**
@@ -107,7 +109,12 @@ return redirect()->action('TemujanjiController@index')->withMessage('Temujanji b
      */
     public function edit($id)
     {
-        return view('temujanji/edit', ['temujanjis' =>temujanji::findOrFail($id)]);
+
+        $temujanji = Temujanji::findOrFail($id);
+        $temujanji->masaMula = $this->change_date_format_fullcalendar($temujanji->masaMula);
+        $temujanji->masaAkhir = $this->change_date_format_fullcalendar($temujanji->masaAkhir);
+        return view('temujanji.edit', compact('temujanji'));
+        // return view('temujanji.edit', ['temujanjis' =>temujanji::findOrFail($id)]);
     }
 
     /**

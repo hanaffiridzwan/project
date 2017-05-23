@@ -6,7 +6,7 @@
             <img src="{{ ('/images/ukm.jpg') }}" width="200" height="150"
             class="col-md-4 col-md-offset-2">
            
-                <div class="lead">Borang Penyelian</div>
+                <div class="lead">Borang Rekod Penyelian</div>
                     <div class="col-md-8 col-md-offset-2">
                     <form class="form-horizontal" method="post" action="{{ action('borangPenyeliansController@store') }}" role="form"  enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -81,7 +81,7 @@
                             <label for="laporanPerjumpaan" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
 
                             <div class="col-md-6">
-                                <input id="laporanPerjumpaan" type="laporanPerjumpaan" class="form-control" name="laporanPerjumpaan" value="{{ old('laporanPerjumpaan') }}" required>
+                                <textarea id="laporanPerjumpaan" type="laporanPerjumpaan" rows="6" class="form-control" name="laporanPerjumpaan" maxlength="500" value="{{ old('laporanPerjumpaan') }}" required></textarea>
 
                                 @if ($errors->has('laporanPerjumpaan'))
                                     <span class="help-block">
@@ -94,7 +94,7 @@
                             <label for="tarikhPerjumpaan" class="col-md-4 control-label">Tarikh Perjumpaan</label>
 
                             <div class="col-md-6">
-                                <input id="tarikhPerjumpaan" type="tarikhPerjumpaan" class="form-control" name="tarikhPerjumpaan" value="{{ old('tarikhPerjumpaan') }}" required>
+                                <input id="tarikhPerjumpaan" type="date" class="form-control" name="tarikhPerjumpaan" value="{{ old('tarikhPerjumpaan') }}" required>
 
                                 @if ($errors->has('tarikhPerjumpaan'))
                                     <span class="help-block">
@@ -107,7 +107,7 @@
                             <label for="perjalananObjektif" class="col-md-4 control-label">Perjalanan objektif pada perjumpaan lepas</label>
 
                             <div class="col-md-6">
-                                <input id="perjalananObjektif" type="perjalananObjektif" class="form-control" name="perjalananObjektif" value="{{ old('perjalananObjektif') }}" required>
+                                <textarea id="perjalananObjektif" rows="6" type="perjalananObjektif" class="form-control" name="perjalananObjektif" maxlength="500" value="{{ old('perjalananObjektif') }}" required></textarea>
 
                                 @if ($errors->has('perjalananObjektif'))
                                     <span class="help-block">
@@ -121,7 +121,7 @@
                             <label for="objektif" class="col-md-4 control-label">Pelajar:Objektif yang dipersetujui untuk dilakukan sebelum perjumpaan seterusnya:</label>
 
                             <div class="col-md-6">
-                                <input id="objektif" type="objektif" class="form-control" name="objektif" required>
+                                <textarea id="objektif" rows="6" type="objektif" class="form-control" name="objektif" maxlength="500" required></textarea>
 
                                 @if ($errors->has('objektif'))
                                     <span class="help-block">
@@ -134,7 +134,7 @@
                          <label for="tarikhPerjumpaanSeterusnya" class="col-md-4 control-label">Tarikh Perjumpaan Seterusnya:</label>
 
                             <div class="col-md-6">
-                                <input id="tarikhPerjumpaanSeterusnya" type="tarikhPerjumpaanSeterusnya" class="form-control" name="tarikhPerjumpaanSeterusnya" required>
+                                <input id="tarikhPerjumpaanSeterusnya" type="date" class="form-control" name="tarikhPerjumpaanSeterusnya" required>
 
                                 @if ($errors->has('tarikhPerjumpaanSeterusnya'))
                                     <span class="help-block">
@@ -143,12 +143,12 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
 
                                 <button type="submit" class="btn btn-success">
-                                    Hantar
+                                    Sah
                                 </button>
                             </div>
                         </div>

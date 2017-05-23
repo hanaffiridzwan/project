@@ -1,3 +1,4 @@
+@include('modal.destroy-modal')
 @extends('layouts.app')
 
 @section('content')
@@ -7,8 +8,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Laporan Prestasi</div>
                 <div class="panel panel-default">
-    <div class="panel-heading">
-      <a href="{{ url('/laporanPrestasi/create') }}" class="btn btn-info pull-center"  role="button">Laporan Baru</a></h2>
+    <!-- <div class="panel-heading"> -->
+      
                                     </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -17,7 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Laporan</th>
+                                    <th>Tajuk Kajian</th>
                                     <th>Nama Pelajar</th>
                                     <th></th>
                                 </tr>
@@ -27,28 +28,26 @@
                         @foreach($laporanPrestasis as $laporanPrestasi)
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
-                            <td>{{ $laporanPrestasi->namaLaporan }}</td>
+                            <td>{{ $laporanPrestasi->tajukKajian }}</td>
                             <td>{{ $laporanPrestasi->namaPelajar }}</td>
                             <td></td>
-                             <a class="btn btn--primary btn-xs" href="{{ ('laporanPrestasi/' .$laporanPrestasi->id. 'edit/' ) }}">
-                            <span class="glyphicon-edit"></span>Edit</a>
-                            <form action="{{ url('laporanPrestasi/' .$laporanPrestasi->id) }}" style="display:inline" method="POST">
-                            <input type="hidden" name="_method" value="DELETE" />
-                            {{ csrf_field() }}
-                            <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span>Delete</button>
-                            </form>
-                            </td>
-                            </tr>
-
+                            <td></td>
+                            <td>
+                                <a href="{{action('laporanPrestasisController@edit' , $laporanPrestasi->id) }}" class-"btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ action('laporanPrestasisController@destroy', $laporanPrestasi->id) }}" class="btn btn-danger btn-sm" id="confirm-modal">Padam</a> 
                                 @endforeach
+                                </tr></td>
                             </tbody>
                             </table>
                         @else 
                         <h2>Tiada Maklumat lagi!</h2>
                             </div>
                         @endif
+                       
+                        <a href="{{ url('/laporanPrestasi/create') }}" class="btn btn-info pull-center"  role="button">Laporan Baru</a></h2>
                     </div>
                     </div>
+                   <!--  <script src="{{ asset('js/warning.js') }}"></script> -->
                         @endsection
 
 

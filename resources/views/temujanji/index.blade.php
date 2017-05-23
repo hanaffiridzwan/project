@@ -5,7 +5,7 @@
 <div class="row">
 	<div clss="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active">You are here: Home</li>
+			<li class="active">Anda di sini: Home</li>
 		</ol>
 	</div>
 </div>

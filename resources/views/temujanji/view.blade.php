@@ -25,21 +25,11 @@
 		<p>Time: <br>
 		{{ date("g:ia\, jS M Y", strtotime($temujanji->masaMula)) . ' until ' . date("g:ia\, jS M Y", strtotime($temujanji->masaAkhir)) }}
 		</p>
+
 		
-		<p>Duration: <br>
-		{{ $duration }}
-		</p>
 		
-		<p>
-			<form action="{{ url('temujanji/' . $temujanji->id) }}" style="display:inline;" method="POST">
-				<input type="hidden" name="_method" value="DELETE" />
-				{{ csrf_field() }}
-				<button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button>
-			</form>
-			<a class="btn btn-primary" href="{{ url('temujanji/' . $temujanji->id . '/edit')}}">
-				<span class="glyphicon glyphicon-edit"></span> Edit</a> 
-			
-		</p>
+		
+		
 		
 	</div>
 </div>

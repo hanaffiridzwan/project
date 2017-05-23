@@ -45,11 +45,11 @@ class User extends Authenticatable
 
     public function profile()
     {
-        if ($this->userRole == 'penyelia')
-         {
-            return $this->penyelia();
-        } else {
+        if ($this->userRole == 'pelajar')
+        {
             return $this->pelajar();
+        } else {
+            return $this->penyelia();
         }
     }
 

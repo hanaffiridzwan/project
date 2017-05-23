@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -15,15 +15,11 @@
 <div class="row">
 	<div class="col-lg-6">
 		
-		@if($errors)
-			@foreach($errors->all() as $error)
-			<p>{{ $error }}</p>
-			@endforeach
-		@endif
-		
-		<form action="{{ url('temujanji/' . $temujanji->id) }}" method="POST">
-			{{ csrf_field() }}
-			<input type="hidden" name="_method" value="PUT" />
+		<form class="form-horizontal" action="{{ action('TemujanjiController@update', $temujanji->id) }}"
+method="POST" enctype="multipart/form-data">
+{{ csrf_field() }}
+{{ method_field('PATCH') }}
+
 			<div class="form-group @if($errors->has('nama')) has-error has-feedback @endif">
 				<label for="nama">Your Name</label>
 				<input type="text" class="form-control" name="nama" value="{{ $temujanji->nama }}" placeholder="E.g. Pisyek">

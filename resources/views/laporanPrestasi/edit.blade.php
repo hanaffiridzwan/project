@@ -4,37 +4,17 @@
 <div class="container">
     <div class="row">
 
-            @if($errors)
-            @foreach(@errors->all() as $error)
-            <p>{{ @error }}</p>
-            @endforeach
-        @endif
-
             <img src="{{ ('/images/ukm.jpg')}}" width="200" height="150" class="col-md-4 col-md-offset-2">
                 <label class="lead" >Laporan Prestasi Pelajar</label>
                  <div class="col-md-8 col-md-offset-2">
-                    <form class="form-horizontal" method="post" action="{{ action('laporanPrestasisController@update' .$laporanPrestasi->id) }}" role="form"  enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ action('laporanPrestasisController@update') }}"  enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
                     
                          <div class="panel panel-info">
-                        }
-                        }
-                        <div class="panel-heading">Maklumat laporan</div>
-                        <div class="form-group{{ $errors->has('namaLaporan') ? ' has-error' : '' }}">
-                            <label for="namaLaporan" class="col-md-4 control-label">Nama Laporan</label>
-
-                            <div class="col-md-6">
-                                <input id="namaLaporan" type="text" class="form-control" name="namaLaporan" value="{{ old('namaLaporan') }}" required autofocus>
-
-                                @if ($errors->has('namaLaporan'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('namaLaporan') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="panel-heading">Maklumat Pelajar dan Penyelia</div>
+                       
+                        <div class="panel panel-info">
+                           <div class="panel-heading">Maklumat Pelajar dan Penyelia</div>
                         <div class="form-group{{ $errors->has('namaPelajar') ? ' has-error' : '' }}">
                             <label for="namaPelajar" class="col-md-4 control-label">Nama Pelajar</label>
 
@@ -48,15 +28,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <!--  <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">User Categories</label>
-                             <div class="col-md-6">
-                                 <select name="category" id="category">
-                                 <option value="" disabled>Please Select</option>
-                                 <option value="lecturer">Lecturer</option>
-                                 <option value="student">Student</option>
-                                 </select></div></div> -->
                                <div class="form-group{{ $errors->has('namaPenyelia') ? ' has-error' : '' }}">
                             <label for="namaPenyelia" class="col-md-4 control-label">Nama Penyelia</label>
 
@@ -70,33 +41,142 @@
                                 @endif
                             </div>
                         </div>  
-                         <div class="panel panel-info">
-                        <div class="panel-heading">Hasil Penyelian</div>
-                         <div class="form-group{{ $errors->has('rumusan') ? ' has-error' : '' }}">
-                            <label for="rumusan" class="col-md-4 control-label">Rumusan</label>
+                        <div class="form-group{{ $errors->has('tarikh') ? ' has-error' : '' }}">
+                            <label for="tarikh" class="col-md-4 control-label">Tarikh</label>
 
                             <div class="col-md-6">
-                                <input id="rumusan" type="rumusan" class="form-control" name="rumusan" value="{{ old('rumusan') }}" required>
+                                <input id="tarikh" type="tarikh" class="form-control" name="tarikh" value="{{ old('tarikh') }}" required>
 
-                                @if ($errors->has('rumusan'))
+                                @if ($errors->has('tarikh'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('rumusan') }}</strong>
+                                        <strong>{{ $errors->first('tarikh') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>  
-                         <div class="form-group{{ $errors->has('markah') ? ' has-error' : '' }}">
-                            <label for="markah" class="col-md-4 control-label">markah</label>
+                         <div class="panel panel-info">
+                        <div class="panel-heading">Hasil Penyelian</div>
+                         <div class="form-group{{ $errors->has('tajukKajian') ? ' has-error' : '' }}">
+                            <label for="tajukKajian" class="col-md-4 control-label">Tajuk Kajian:</label>
 
                             <div class="col-md-6">
-                                <input id="markah" type="markah" class="form-control" name="markah" value="{{ old('markah') }}" required>
+                                <input id="tajukKajian" type="tajukKajian" class="form-control" name="tajukKajian" value="{{ old('tajukKajian') }}" required>
 
-                                @if ($errors->has('markah'))
+                                @if ($errors->has('tajukKajian'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('markah') }}</strong>
+                                        <strong>{{ $errors->first('tajukKajian') }}</strong>
                                     </span>
                                 @endif
-                            
+                            </div>
+                        </div>  
+                         <div class="form-group{{ $errors->has('kemajuan') ? ' has-error' : '' }}">
+                            <label for="kemajuan" class="col-md-4 control-label">Sila huraikan kemajuan projek anda sepanjang 6 bulan ini:</label>
+
+                            <div class="col-md-6">
+                                <input id="kemajuan" type="kemajuan" class="form-control" name="kemajuan" value="{{ old('kemajuan') }}" required>
+
+                                @if ($errors->has('kemajuan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kemajuan') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('dapatan') ? ' has-error' : '' }}">
+                            <label for="dapatan" class="col-md-4 control-label">Sila senaraikan, hasil kerja yang telah dihasilkan sepanjang 6 bulan ini( contoh. draf tesis, pelan kajian, keratan journal dll: </label>
+
+                            <div class="col-md-6">
+                                <input id="dapatan" type="dapatan" class="form-control" name="dapatan" value="{{ old('dapatan') }}" required>
+
+                                @if ($errors->has('dapatan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('dapatan') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                        <div class="form-group{{ $errors->has('huraianAktiviti') ? ' has-error' : '' }}">
+                            <label for="huraianAktiviti" class="col-md-4 control-label">Terangkan secara ringkas pelan kajian terkini anda. Apakah aktiviti yang telah anda rancang untuk 6 bulan akan datang? Apakah pelan yang akan anda bentangkan?</label>
+
+                        <div class="col-md-6">
+                                <input id="huraianAktiviti" type="huraianAktiviti" class="form-control" name="huraianAktiviti" value="{{ old('huraianAktiviti') }}" required>
+
+                                @if ($errors->has('huraianAktiviti'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('huraianAktiviti') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                        <div class="form-group{{ $errors->has('pelan') ? ' has-error' : '' }}">
+                            <label for="pelan" class="col-md-4 control-label">Adakah anda berada dalam landasan yang betul berdasarkan jadual pelan anda? Huraikan </label>
+
+                        <div class="col-md-6">
+                                <input id="pelan" type="pelan" class="form-control" name="pelan" value="{{ old('pelan') }}" required>
+
+                                @if ($errors->has('pelan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pelan') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                        <div class="form-group{{ $errors->has('komen') ? ' has-error' : '' }}">
+                            <label for="komen" class="col-md-4 control-label">Sila masukkan komen anda disini:</label>
+
+                        <div class="col-md-6">
+                                <input id="komen" type="komen" class="form-control" name="komen" value="{{ old('komen') }}" required>
+
+                                @if ($errors->has('komen'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('komen') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                        <div class="panel panel-info">
+                        <div class="panel-heading">Untuk Penyelia</div>
+                        <div class="form-group{{ $errors->has('komenPenyelia') ? ' has-error' : '' }}">
+                            <label for="komenPenyelia" class="col-md-4 control-label">Sila komen tentang kemajuan pelajar termasuklah sebarang masalah dan pengalaman dan tindakan yang wajar diambil </label>
+
+
+                            <div class="col-md-6">
+                                <input id="komenPenyelia" type="komenPenyelia" class="form-control" name="komenPenyelia" value="{{ old('komenPenyelia') }}" required>
+
+                                @if ($errors->has('komenPenyelia'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('komenPenyelia') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+                            <div class="form-group{{ $errors->has('KemajuanPelajar') ? ' has-error' : '' }}">
+                            <label for="KemajuanPelajar" class="col-md-4 control-label">Kemajuan sepanjang 6 bulan</label>
+
+                            <div class="col-md-6">
+                                <input id="KemajuanPelajar" type="KemajuanPelajar" class="form-control" name="KemajuanPelajar" value="{{ old('KemajuanPelajar') }}" required>
+
+                                @if ($errors->has('KemajuanPelajar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('KemajuanPelajar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                            <div class="form-group{{ $errors->has('pelanKajian') ? ' has-error' : '' }}">
+                            <label for="pelanKajian" class="col-md-4 control-label">Adakah kajian ini mengikut landasan yang betul? </label>
+
+                            <div class="col-md-6">
+                                <input id="pelanKajian" type="textarea" cols="50" rows="10" class="form-control" name="pelanKajian" value="{{ old('pelanKajian') }}" required>
+
+                                @if ($errors->has('pelanKajian'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pelanKajian') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

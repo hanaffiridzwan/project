@@ -21,7 +21,7 @@ class CreatePelajarsTable extends Migration
             $table->string('kategoriPelajar')->nullable();
             $table->string('program')->nullable();
             $table->string('noTelefon')->nullable();
-            $table->integer('idDaftar')->nullable();
+            $table->string('idDaftar')->nullable();
             $table->string('gambar')->nullable();
             $table->timestamps();
 

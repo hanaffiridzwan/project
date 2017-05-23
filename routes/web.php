@@ -57,25 +57,37 @@ Route::get('/profile', 'ProfilesController@index');
 Route::patch('/profile', 'ProfilesController@update');
 Route::get('/profile/edit', 'ProfilesController@edit');
 Route::get('/muatturun', 'MuatTurunController@downFunc');
-Route::get('/temujanji', 'TemujanjiController@see');
-Route::get('/temujanji/index', 'TemujanjiController@index');
+Route::get('/temujanji/index', 'TemujanjiController@see');
+Route::get('/temujanji/list', 'TemujanjiController@index');
 Route::get('/temujanji/create', 'TemujanjiController@create');
 Route::post('/temujanji/create', 'TemujanjiController@store');
 Route::post('temujanji/{temujanji}/simpan', 'TemujanjiController@simpan');
+Route::get('/temujanji/view', 'TemujanjiController@show');
+Route::get('/temujanji/{temujanji}/edit', 'TemujanjiController@edit');
+Route::patch('/temujanji/{temujanji}','TemujanjiController@update');
+Route::resource('temujanji', 'TemujanjiController');
 
 Route::get('/laporanPrestasi', 'laporanPrestasisController@index');
 Route::get('/laporanPrestasi/create', 'laporanPrestasisController@create');
 Route::post('/laporanPrestasi', 'laporanPrestasisController@store');
+Route::get('/laporanPrestasi/{tajukKajian', 'laporanPrestasisController@edit');
+Route::delete('/laporanPrestasi/{tajukKajian}', 'laporanPrestasisController@destroy');
 // Route::get('/laporanPrestasi/{id}', 'laporanPrestasisController@edit');
 Route::get('/borangPenyelian', 'borangPenyeliansController@index');
 Route::get('/borangPenyelian/create', 'borangPenyeliansController@create');
 Route::post('/borangPenyelian', 'borangPenyeliansController@store');
+// Route::get('/borangPenyelian/show', 'borangPenyeliansController@show');
+Route::get('/borangPenyelian/{id}/show', 'borangPenyeliansController@update');
+Route::get('/borangPenyelian/sah', 'borangPenyeliansController@show');
+
+
 
 Route::get('/api', function() {
-	$temujanjis = DB::table('temujanjis')->select('id', 'nama', 'aktiviti', 'masaMula as start', 'masaAkhir as end')->get();
+	$temujanjis = DB::table('temujanjis')->select('id', 'nama', 'aktiviti', 'masaMula as start', 'masaAkhir as end')->where('pengesahan','terima')->get();
+
 	foreach($temujanjis as $temujanji)
 	{
-		$temujanji->aktiviti = $temujanji->aktiviti . ' - ' .$temujanji->nama;
+		$temujanji->title = $temujanji->aktiviti . ' - ' .$temujanji->nama;
 		$temujanji->url = url('temujanji/' .$temujanji->id);
 	}
 	return $temujanjis;

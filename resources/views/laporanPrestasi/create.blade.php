@@ -15,7 +15,7 @@
                             <label for="namaPelajar" class="col-md-4 control-label">Nama Pelajar</label>
 
                             <div class="col-md-6">
-                                <input id="namaPelajar" type="namaPelajar" class="form-control" name="namaPelajar" value="{{ old('namaPelajar') }}" required>
+                                <input id="namaPelajar" type="namaPelajar" class="form-control" name="namaPelajar" value="{{ old('namaPelajar') }}" >
 
                                 @if ($errors->has('namaPelajar'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                             <label for="namaPenyelia" class="col-md-4 control-label">Nama Penyelia</label>
 
                             <div class="col-md-6">
-                                <input id="namaPenyelia" type="namaPenyelia" class="form-control" name="namaPenyelia" value="{{ old('namaPenyelia') }}" required>
+                                <input id="namaPenyelia" type="namaPenyelia" class="form-control" name="namaPenyelia" value="{{ old('namaPenyelia') }}" >
 
                                 @if ($errors->has('namaPenyelia'))
                                     <span class="help-block">
@@ -41,7 +41,7 @@
                             <label for="tarikh" class="col-md-4 control-label">Tarikh</label>
 
                             <div class="col-md-6">
-                                <input id="tarikh" type="tarikh" class="form-control" name="tarikh" value="{{ old('tarikh') }}" required>
+                                <input id="tarikh" type="tarikh" class="form-control" name="tarikh" value="{{ old('tarikh') }}" >
 
                                 @if ($errors->has('tarikh'))
                                     <span class="help-block">
@@ -56,7 +56,7 @@
                             <label for="tajukKajian" class="col-md-4 control-label">Tajuk Kajian:</label>
 
                             <div class="col-md-6">
-                                <input id="tajukKajian" type="tajukKajian" class="form-control" name="tajukKajian" value="{{ old('tajukKajian') }}" required>
+                                <input id="tajukKajian" type="tajukKajian" class="form-control" name="tajukKajian" value="{{ old('tajukKajian') }}" >
 
                                 @if ($errors->has('tajukKajian'))
                                     <span class="help-block">
@@ -66,10 +66,10 @@
                             </div>
                         </div>  
                          <div class="form-group{{ $errors->has('kemajuan') ? ' has-error' : '' }}">
-                            <label for="kemajuan" class="col-md-4 control-label">kemajuan</label>
+                            <label for="kemajuan" class="col-md-4 control-label">Sila huraikan kemajuan projek anda sepanjang 6 bulan ini:</label>
 
                             <div class="col-md-6">
-                                <input id="kemajuan" type="kemajuan" class="form-control" name="kemajuan" value="{{ old('kemajuan') }}" required>
+                                <textarea id="kemajuan" type="kemajuan" rows="6" class="form-control" name="kemajuan" value="{{ old('kemajuan') }}" maxlength="500" ></textarea>
 
                                 @if ($errors->has('kemajuan'))
                                     <span class="help-block">
@@ -79,10 +79,10 @@
                                 </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('dapatan') ? ' has-error' : '' }}">
-                            <label for="dapatan" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="dapatan" class="col-md-4 control-label">Sila senaraikan, hasil kerja yang telah dihasilkan sepanjang 6 bulan ini( contoh. draf tesis, pelan kajian, keratan journal dll: </label>
 
                             <div class="col-md-6">
-                                <input id="dapatan" type="dapatan" class="form-control" name="dapatan" value="{{ old('dapatan') }}" required>
+                                <textarea id="dapatan" type="dapatan" rows="6"class="form-control" name="dapatan" value="{{ old('dapatan') }}" maxlength="6" ></textarea>
 
                                 @if ($errors->has('dapatan'))
                                     <span class="help-block">
@@ -92,10 +92,10 @@
                             </div>
                         </div>  
                         <div class="form-group{{ $errors->has('huraianAktiviti') ? ' has-error' : '' }}">
-                            <label for="huraianAktiviti" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="huraianAktiviti" class="col-md-4 control-label">Terangkan secara ringkas pelan kajian terkini anda. Apakah aktiviti yang telah anda rancang untuk 6 bulan akan datang? Apakah pelan yang akan anda bentangkan?</label>
 
                         <div class="col-md-6">
-                                <input id="huraianAktiviti" type="huraianAktiviti" class="form-control" name="huraianAktiviti" value="{{ old('huraianAktiviti') }}" required>
+                                <textarea id="huraianAktiviti" rows="6" type="huraianAktiviti" class="form-control" name="huraianAktiviti" value="{{ old('huraianAktiviti') }}" maxlength="500" ></textarea>
 
                                 @if ($errors->has('huraianAktiviti'))
                                     <span class="help-block">
@@ -105,10 +105,10 @@
                             </div>
                         </div>  
                         <div class="form-group{{ $errors->has('pelan') ? ' has-error' : '' }}">
-                            <label for="pelan" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="pelan" class="col-md-4 control-label">Adakah anda berada dalam landasan yang betul berdasarkan jadual pelan anda? Huraikan </label>
 
                         <div class="col-md-6">
-                                <input id="pelan" type="pelan" class="form-control" name="pelan" value="{{ old('pelan') }}" required>
+                                <textarea id="pelan" type="pelan" rows="6" class="form-control" name="pelan" value="{{ old('pelan') }}" maxlength="500"></textarea>
 
                                 @if ($errors->has('pelan'))
                                     <span class="help-block">
@@ -118,10 +118,10 @@
                             </div>
                         </div>  
                         <div class="form-group{{ $errors->has('komen') ? ' has-error' : '' }}">
-                            <label for="komen" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="komen" class="col-md-4 control-label">Sila masukkan komen anda disini:</label>
 
                         <div class="col-md-6">
-                                <input id="komen" type="komen" class="form-control" name="komen" value="{{ old('komen') }}" required>
+                                <textarea id="komen" rows="6" type="komen" class="form-control" name="komen" value="{{ old('komen') }}" maxlength="500" ></textarea>
 
                                 @if ($errors->has('komen'))
                                     <span class="help-block">
@@ -133,11 +133,11 @@
                         <div class="panel panel-info">
                         <div class="panel-heading">Untuk Penyelia</div>
                         <div class="form-group{{ $errors->has('komenPenyelia') ? ' has-error' : '' }}">
-                            <label for="komenPenyelia" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="komenPenyelia" class="col-md-4 control-label">Sila komen tentang kemajuan pelajar termasuklah sebarang masalah dan pengalaman dan tindakan yang wajar diambil </label>
 
 
                             <div class="col-md-6">
-                                <input id="komenPenyelia" type="komenPenyelia" class="form-control" name="komenPenyelia" value="{{ old('komenPenyelia') }}" required>
+                                <textarea id="komenPenyelia" rows="6" type="komenPenyelia" class="form-control" name="komenPenyelia" value="{{ old('komenPenyelia') }}" maxlength="500" ></textarea>
 
                                 @if ($errors->has('komenPenyelia'))
                                     <span class="help-block">
@@ -148,10 +148,10 @@
                         </div>  
 
                             <div class="form-group{{ $errors->has('KemajuanPelajar') ? ' has-error' : '' }}">
-                            <label for="KemajuanPelajar" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="KemajuanPelajar" class="col-md-4 control-label">Kemajuan sepanjang 6 bulan</label>
 
                             <div class="col-md-6">
-                                <input id="KemajuanPelajar" type="KemajuanPelajar" class="form-control" name="KemajuanPelajar" value="{{ old('KemajuanPelajar') }}" required>
+                                <textarea id="KemajuanPelajar" rows="6" type="KemajuanPelajar" class="form-control" name="KemajuanPelajar" value="{{ old('KemajuanPelajar') }}" maxlength="500"></textarea>
 
                                 @if ($errors->has('KemajuanPelajar'))
                                     <span class="help-block">
@@ -161,10 +161,10 @@
                             </div>
                         </div>  
                             <div class="form-group{{ $errors->has('pelanKajian') ? ' has-error' : '' }}">
-                            <label for="pelanKajian" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
+                            <label for="pelanKajian" class="col-md-4 control-label">Adakah kajian ini mengikut landasan yang betul? </label>
 
                             <div class="col-md-6">
-                                <input id="pelanKajian" type="pelanKajian" class="form-control" name="pelanKajian" value="{{ old('pelanKajian') }}" required>
+                                <textarea id="pelanKajian" type="textarea" cols="50" rows="6" class="form-control" name="pelanKajian" value="{{ old('pelanKajian') }}" maxlength="500" ></textarea>
 
                                 @if ($errors->has('pelanKajian'))
                                     <span class="help-block">
