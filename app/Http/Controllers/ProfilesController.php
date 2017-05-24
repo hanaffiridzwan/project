@@ -20,6 +20,7 @@ class ProfilesController extends Controller
     public function index()
     {
 
+
         // $users = User::with('profile')->where('id', auth()->id())->get();
         $user = auth()->user()->load('profile');
         
@@ -32,6 +33,7 @@ class ProfilesController extends Controller
      */
     public function edit()
     {
+        
 
         $user = auth()->user()->load('profile');
 

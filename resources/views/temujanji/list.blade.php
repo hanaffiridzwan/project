@@ -60,11 +60,7 @@
 
 						<a class="btn btn-primary btn-xs" href="{{ action('TemujanjiController@edit' , $temujanji->id)}}">
 							<span class="glyphicon glyphicon-edit"></span> Edit</a> 
-						<form action="{{ url('temujanji/' . $temujanji->id) }}" style="display:inline" method="POST">
-							<input type="hidden" name="_method" value="DELETE" />
-							{{ csrf_field() }}
-							<button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button>
-						</form>
+						
 						
 					</td>
 				</tr>

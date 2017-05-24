@@ -1,4 +1,3 @@
-@include('modal.destroy-modal')
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +9,7 @@
                 <div class="panel panel-default">
     <!-- <div class="panel-heading"> -->
       
-                                    </div>
+                                    
                 <div class="row">
                     <div class="col-lg-12">
                         @if($laporanPrestasis->count() > 0)
@@ -18,9 +17,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tajuk Kajian</th>
                                     <th>Nama Pelajar</th>
-                                    <th></th>
+                                    <th>Tajuk Kajian</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -28,15 +27,16 @@
                         @foreach($laporanPrestasis as $laporanPrestasi)
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
+
+                            <td><{{ $laporanPrestasi->namaPelajar }}</td>
                             <td>{{ $laporanPrestasi->tajukKajian }}</td>
-                            <td>{{ $laporanPrestasi->namaPelajar }}</td>
-                            <td></td>
-                            <td></td>
+                          
+                         
                             <td>
-                                <a href="{{action('laporanPrestasisController@edit' , $laporanPrestasi->id) }}" class-"btn btn-primary btn-sm">Edit</a>
-                                <a href="{{ action('laporanPrestasisController@destroy', $laporanPrestasi->id) }}" class="btn btn-danger btn-sm" id="confirm-modal">Padam</a> 
+                                <a class-"btn btn-primary btn-xs" href="{{action('laporanPrestasisController@edit' , $laporanPrestasi->id) }}" ><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                      
                                 @endforeach
-                                </tr></td>
+                                </tr>
                             </tbody>
                             </table>
                         @else 

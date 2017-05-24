@@ -8,8 +8,9 @@
            
                 <div class="lead">Borang Rekod Penyelian</div>
                     <div class="col-md-8 col-md-offset-2">
-                    <form class="form-horizontal" method="post" action="{{ action('borangPenyeliansController@simpan') }}" role="form"  enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ action('borangPenyeliansController@simpan' , $borangPenyelian->id) }}" role="form"  enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
                         <div class="panel panel-info">
                         <div class="panel-heading">Maklumat Diri</div>
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
@@ -55,7 +56,7 @@
                             <label for="program" class="col-md-4 control-label">Program</label>
 
                             <div class="col-md-6">
-                                <input id="program" type="program" class="form-control" name="program" value="{{ $borangPenyelian->program') }}" readonly>
+                                <input id="program" type="program" class="form-control" name="program" value="{{ $borangPenyelian->program }}" readonly>
 
                                 @if ($errors->has('program'))
                                     <span class="help-block">
@@ -68,7 +69,7 @@
                             <label for="namaPenyelia" class="col-md-4 control-label">Nama Penyelia</label>
 
                             <div class="col-md-6">
-                                <input id="namaPenyelia" type="namaPenyelia" class="form-control" name="namaPenyelia" value="{{ $borangPenyelian->namaPenyelia') }}" readonly>
+                                <input id="namaPenyelia" type="namaPenyelia" class="form-control" name="namaPenyelia" value="{{ $borangPenyelian->namaPenyelia }}" readonly>
 
                                 @if ($errors->has('namaPenyelia'))
                                     <span class="help-block">
@@ -82,8 +83,8 @@
                             <label for="laporanPerjumpaan" class="col-md-4 control-label">Laporan Perjumpaan Terkini</label>
 
                             <div class="col-md-6">
-                                <textarea id="laporanPerjumpaan" type="laporanPerjumpaan" rows="6" class="form-control" name="laporanPerjumpaan" maxlength="500" value="{{ $borangPenyelian->laporanPerjumpaan') }}" readonly></textarea>
-
+                                <!-- <textarea id="laporanPerjumpaan" type="laporanPerjumpaan" rows="6" class="form-control" name="laporanPerjumpaan" maxlength="500" value="{{ $borangPenyelian->laporanPerjumpaan }}" readonly></textarea> -->
+                                {{ $borangPenyelian->laporanPerjumpaan }}
                                 @if ($errors->has('laporanPerjumpaan'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('laporanPerjumpaan') }}</strong>
@@ -108,8 +109,8 @@
                             <label for="perjalananObjektif" class="col-md-4 control-label">Perjalanan objektif pada perjumpaan lepas</label>
 
                             <div class="col-md-6">
-                                <textarea id="perjalananObjektif" rows="6" type="perjalananObjektif" class="form-control" name="perjalananObjektif" maxlength="500" value="{{ $borangPenyelian->perjalananObjektif }}" readonly></textarea>
-
+                               <!--  <textarea id="perjalananObjektif" rows="6" type="perjalananObjektif" class="form-control" name="perjalananObjektif" maxlength="500" value="{{ $borangPenyelian->perjalananObjektif }}" readonly></textarea> -->
+                                    {{ $borangPenyelian->perjalananObjektif }}
                                 @if ($errors->has('perjalananObjektif'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('perjalananObjektif') }}</strong>
@@ -122,8 +123,8 @@
                             <label for="objektif" class="col-md-4 control-label">Pelajar:Objektif yang dipersetujui untuk dilakukan sebelum perjumpaan seterusnya:</label>
 
                             <div class="col-md-6">
-                                <textarea id="objektif" rows="6" type="objektif" class="form-control" name="objektif" maxlength="500"value="{{ $borangPenyelian->objektif }}" readonly></textarea>
-
+                               <!--  <textarea id="objektif" rows="6" type="objektif" class="form-control" name="objektif" maxlength="500"value="{{ $borangPenyelian->objektif }}" readonly></textarea> -->
+                                    {{ $borangPenyelian->objektif }}
                                 @if ($errors->has('objektif'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('objektif') }}</strong>
@@ -135,31 +136,16 @@
                          <label for="tarikhPerjumpaanSeterusnya" class="col-md-4 control-label">Tarikh Perjumpaan Seterusnya:</label>
 
                             <div class="col-md-6">
-                                <input id="tarikhPerjumpaanSeterusnya" type="date" class="form-control" name="tarikhPerjumpaanSeterusnya" value="{{ $borangPenyelian->tarikhPerjumpaanTerkini }}" readonly>
-
-                                @if ($errors->has('tarikhPerjumpaanSeterusnya'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tarikhPerjumpaanSeterusnya') }}</strong>
-                                    </span>
-                                @endif
+                                <!-- <input id="tarikhPerjumpaanSeterusnya" type="date" class="form-control" name="tarikhPerjumpaanSeterusnya" value="{{ $borangPenyelian->tarikhPerjumpaanTerkini }}" readonly> -->
+                                    {{ $borangPenyelian->tarikhPerjumpaanSeterusnya }}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-
-                                <form action="{{ action('borangPenyeliansController@simpan', $borangPenyelian->id) }}" method="POST">
-{{ csrf_field() }}
-@if ($borangPenyelian->pengesahan == 'Disahkan')
-<button name="pengesahan" id="pengesahan" type="submit" class="btn btn-success btn-sm" value="Sah">Sah</
-<input type="hidden" name="borangPenyelian_id" value="{{ $borangPenyelian->id }}">
-</td>
-@endif
-@if ($borangPenyelian->pengesahan == 'Sah')
-{{$borangPenyelian->pengesahan }}
-@endif
-
-</form>
+                <button name="pengesahan" id="pengesahan" type="submit" class="btn btn-success btn-sm" value="Sah">Sah</
+                <input type="hidden" name="borangPenyelian_id" value="{{ $borangPenyelian->id }}">
+        
                                     
                                 </button>
                             </div>

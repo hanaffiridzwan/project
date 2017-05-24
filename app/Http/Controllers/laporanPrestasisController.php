@@ -78,7 +78,9 @@ class laporanPrestasisController extends Controller
      */
     public function edit($id)
     {
-        // return view ('laporanPrestasi.edit', ['laporan_Pretasis' =>laporanPrestasi::findOrFail($id)]);
+      $laporanPrestasi = laporanPrestasi::findOrFail($id);
+      return view('laporanPrestasi.edit', compact('laporanPrestasi'));
+      
     }
 
     /**
@@ -90,7 +92,7 @@ class laporanPrestasisController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $laporanPrestasi = laporanPrestasi::findsOrFail($id);
+       $laporanPrestasi = laporanPrestasi::find($id);
        $laporanPrestasi->namaPelajar = $request->namaPelajar;
        $laporanPrestasi->namaPenyelia = $request->namaPenyelia;
        $laporanPrestasi->tarikh = $request->tarikh;
@@ -103,7 +105,6 @@ class laporanPrestasisController extends Controller
        $laporanPrestasi->komenPenyelia = $request->komenPenyelia;   
        $laporanPrestasi->kemajuanPelajar = $request->kemajuanPelajar;  
        $laporanPrestasi->pelanKajian = $request->pelanKajian;
-       $laporanPrestasi->user_id=Auth::user()->id;
        $laporanPrestasi->save();
 
        return redirect()->action('laporanPrestasisController@index')->withMessage('Maklumat anda telah disimpan di dalam sistem');

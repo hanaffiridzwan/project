@@ -9,17 +9,11 @@ use App\user;
 
 class borangPenyeliansController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
 
-    public function simpan()
-    {
-      $this->validate($request, ['pengesahan']);
-      $borangPenyelian=borang_penyelians::findOrFail($id);
-      $borangPenyelian->user_id=Auth::user()->id;
-      $borangPenyelian->pengesahan = $request->pengesahan;
-      $borangPenyelian->save();
-
-return redirect()->action('borangPenyeliansController@index')->withMessage('Borang berjaya disahkan');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -77,7 +71,8 @@ return redirect()->action('borangPenyeliansController@index')->withMessage('Bora
      */
     public function show($id)
     {
-        return view('borangPenyelian.show');
+        $borangPenyelian = borangPenyelian::findOrFail($id);
+        return view('borangPenyelian.sah', compact('borangPenyelian'));
     }
 
     /**
@@ -86,9 +81,27 @@ return redirect()->action('borangPenyeliansController@index')->withMessage('Bora
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     
+    public function simpan(Request $request, $id)
+    {
+      $this->validate($request, ['pengesahan']);
+      $borangPenyelian = borangPenyelian::findOrFail($id);
+      $borangPenyelian->pengesahan = $request->pengesahan;
+      $borangPenyelian->save();
+
+return redirect()->action('borangPenyeliansController@index')->withMessage('Borang berjaya disahkan');
+    }
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     
     public function edit($id)
     {
-        //
+      $borangPenyelian = borangPenyelian::findOrFail($id);
+      return view('borangPenyelian.edit', compact('borangPenyelian'));
     }
 
     /**
@@ -100,7 +113,7 @@ return redirect()->action('borangPenyeliansController@index')->withMessage('Bora
      */
     public function update(Request $request, $id)
     {
-       $borangPenyelian = new borangPenyelian;
+       $borangPenyelian = borangPenyelian::findOrFail($id);
        $borangPenyelian->nama = $request->nama;
        $borangPenyelian->noMatrik = $request->noMatrik;
        $borangPenyelian ->kategoriPelajar = $request->kategoriPelajar;
@@ -111,7 +124,6 @@ return redirect()->action('borangPenyeliansController@index')->withMessage('Bora
        $borangPenyelian->perjalananObjektif =$request->perjalananObjektif;
        $borangPenyelian->objektif = $request->objektif;
        $borangPenyelian->tarikhPerjumpaanSeterusnya = $request->tarikhPerjumpaanSeterusnya;
-       $borangPenyelian->user_id=Auth::user()->id;
        $borangPenyelian->save();
 
        return redirect()->action('borangPenyeliansController@index')->withMessage('Maklumat anda telah disimpan di dalam sistem');

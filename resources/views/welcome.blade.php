@@ -13,12 +13,13 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+                margin: 0px;
+        padding: 0px;
+        background: #85e028;
+        font-family: 'Didact Gothic', sans-serif;
+        font-size: 12pt;
+        font-weight: 200;
+        color: #FFF;
             }
 
             .full-height {
@@ -57,11 +58,95 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+
+
             }
+            a:hover
+    {
+        text-decoration: none;
+    }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .image
+    {
+        display: inline-block;
+    }
+    
+    .image img
+    {
+        display: block;
+        width: 100%;
+    }
+    
+    .image-full
+    {
+        display: block;
+        width: 100%;
+        margin: 0 0 2em 0;
+    }
+    
+    .image-left
+    {
+        float: left;
+        margin: 0 2em 2em 0;
+    }
+    
+    .image-centered
+    {
+        display: block;
+        margin: 0 0 2em 0;
+    }
+    
+    .image-centered img
+    {
+        margin: 0 auto;
+        width: auto;
+    }
+    ul.style1
+    {
+    }
+    
+    ul.actions
+    {
+    }
+    
+    ul.actions li
+    {
+        display: inline-block;
+        padding: 0em 0.50em;
+    }
+    
+    .title
+    {
+        margin-bottom: 3em;
+    }
+    
+    .title h2
+    {
+        font-size: 2.7em;
+    }
+    
+    .title .byline
+    {
+        font-size: 1.3em;
+        color: rgba(255,255,255,0.60);
+    }
+    #header-wrapper
+    {
+        position: relative;
+        padding: 5em 0em 7em 0em;
+        background: #111111 url(images/header-bg.jpg) no-repeat center;
+        background-size: cover;
+    }
+
+    #header
+    {
+        position: relative;
+        padding: 5em 0em;
+    }
+
         </style>
     </head>
     <body>

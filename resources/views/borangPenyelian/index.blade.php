@@ -22,7 +22,7 @@
                                 <th>Nama</th>
                                 <th>Laporan Perjumpaan Terkini</th>
                                 <th>Tarikh</th>
-                                <th></th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,16 +31,10 @@
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
                             <td>{{ $borangPenyelian->nama }}</td>
-                            <td> <a href="{{ action('borangPenyeliansController@show', $borangPenyelian->id) }}">{{ $borangPenyelian->laporanPerjumpaan}}</td></a>
-                            <td>{{ $borangPenyelian->tarikhPerjumpaan}}</td>
-                            <td>
-                            <a class="btn btn--primary btn-xs" href="{{ ('borangpenyelian/' .$borangPenyelian->id. 'edit/' ) }}">
-                            <span class="glyphicon-edit"></span>Edit</a>
-                            <form action="{{ url('borangpenyelian/' .$borangPenyelian->id) }}" style="display:inline" method="POST">
-                            <input type="hidden" name="_method" value="DELETE" />
-                            {{ csrf_field() }}
-                            <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span>Delete</button>
-
+                            <td><a href="{{ action('borangPenyeliansController@show', $borangPenyelian->id)}}"> {{ $borangPenyelian->laporanPerjumpaan }}</a></td>
+                            <td>{{$borangPenyelian->tarikhPerjumpaan}}</td>
+                            <td>{{$borangPenyelian->pengesahan}}</td>}
+                            <td><a class="btn btn-primary btn-xs" href="{{ action('borangPenyeliansController@edit', $borangPenyelian->id) }}"><span class="glyphicon glyphicon-edit"></span> Edit </a>
                             </form>
                             </td>
                             </tr>

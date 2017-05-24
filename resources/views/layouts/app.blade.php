@@ -12,6 +12,7 @@
     <link rel="icon" href="{{ url('/') }}/_asset/favicon.png">
     <title>Sistem Penyelian dan Semakan Pelajar</title>
 <!-- {{ config('app.name', 'sistem penyelian') }} -->
+
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -72,8 +73,7 @@
                         @else
                              <li><a href="{{ url('/borangPenyelian') }}">Penyelian</a></li>
                               <li><a href="{{ url('/temujanji/index') }}">Kalendar</a></li>
-                                <li><a href="{{ url('/borangPenyelian/show') }}">Sah</a></li>
-                        <li><a href="{{ url('/temujanji/list') }}">Senarai temujanji</a></li>
+                               <li><a href="{{ url('/temujanji/list') }}">Senarai temujanji</a></li>
                              <li><a href="{{ url('/laporanPrestasi') }}">Laporan</a></li>
                              <li><a href="{{ url('/tugasan') }}">Tugasan</a></li>
                              <li><a href="{{ url('/muatturun') }}">Muatturun</a></li>
@@ -151,6 +151,16 @@ Log Keluar
   
 
         @yield('js')
+        <style>
+            html, body {
+                margin: 0px;
+        padding: 0px;
+        background: #85e028;
+        font-family: 'Didact Gothic', sans-serif;
+        font-size: 12pt;
+        font-weight: 200;
+        color: #2885e0;
+            }
 </body>
 </html>
     

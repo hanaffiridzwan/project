@@ -25,7 +25,7 @@ class CreateBorangPenyeliansTable extends Migration
             $table->string('perjalananObjektif');
             $table->string('objektif');
             $table->string('tarikhPerjumpaanSeterusnya');
-            $table->string('pengesahan')->default('Disahkan')->nullable();
+            $table->string('pengesahan')->default('BelumDisahkan')->nullable();
             $table->integer('user_id')->unsigned();;
             $table->timestamps();
 

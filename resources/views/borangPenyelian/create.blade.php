@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row">
-            <img src="{{ ('/images/ukm.jpg') }}" width="200" height="150"
-            class="col-md-4 col-md-offset-2">
+            <img src="{{ ('/images/rekod.jpg') }}" width="200" height="150"
+            class="col-md-8 col-md-offset-2">
            
-                <div class="lead">Borang Rekod Penyelian</div>
+                
                     <div class="col-md-8 col-md-offset-2">
                     <form class="form-horizontal" method="post" action="{{ action('borangPenyeliansController@store') }}" role="form"  enctype="multipart/form-data">
                         {{ csrf_field() }}
